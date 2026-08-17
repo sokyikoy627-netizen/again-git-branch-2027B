@@ -2,21 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sign In</title>
+  <title>Auth</title>
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <div class="container">
-    <h2>Sign In</h2>
-    <form>
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required>
+    <!-- Toggle Buttons -->
+    <div class="toggle-buttons">
+      <button class="toggle-btn active" onclick="showSignIn()">Sign In</button>
+      <button class="toggle-btn" onclick="showSignUp()">Sign Up</button>
+    </div>
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
+    <!-- Sign In Form -->
+    <div id="signIn" class="form-section">
+      <h2>Sign In</h2>
+      <form>
+        <label for="signin-username">Username:</label>
+        <input type="text" id="signin-username" name="username" required>
 
-      <button type="submit">Sign In</button>
-    </form>
+        <label for="signin-password">Password:</label>
+        <input type="password" id="signin-password" name="password" required>
+
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div id="signUp" class="form-section hidden">
+      <h2>Sign Up</h2>
+      <form>
+        <label for="signup-email">Email:</label>
+        <input type="email" id="signup-email" name="email" required>
+
+        <label for="signup-username">Username:</label>
+        <input type="text" id="signup-username" name="username" required>
+
+        <label for="signup-password">Password:</label>
+        <input type="password" id="signup-password" name="password" required>
+
+        <label for="signup-confirm">Confirm Password:</label>
+        <input type="password" id="signup-confirm" name="confirm" required>
+
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
   </div>
+
+  <script>
+    function showSignIn() {
+      document.getElementById('signIn').classList.remove('hidden');
+      document.getElementById('signUp').classList.add('hidden');
+      document.querySelectorAll('.toggle-btn')[0].classList.add('active');
+      document.querySelectorAll('.toggle-btn')[1].classList.remove('active');
+    }
+
+    function showSignUp() {
+      document.getElementById('signUp').classList.remove('hidden');
+      document.getElementById('signIn').classList.add('hidden');
+      document.querySelectorAll('.toggle-btn')[0].classList.remove('active');
+      document.querySelectorAll('.toggle-btn')[1].classList.add('active');
+    }
+  </script>
 </body>
 </html>
