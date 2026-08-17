@@ -16,7 +16,7 @@
     <!-- Sign In Form -->
     <div id="signIn" class="form-section">
       <h2>Sign In</h2>
-      <form>
+      <form onsubmit="handleSignIn(event)">
         <label for="signin-username">Username:</label>
         <input type="text" id="signin-username" name="username" required>
 
@@ -24,13 +24,14 @@
         <input type="password" id="signin-password" name="password" required>
 
         <button type="submit">Sign In</button>
+        <p id="signin-message" class="message"></p>
       </form>
     </div>
 
     <!-- Sign Up Form -->
     <div id="signUp" class="form-section hidden">
       <h2>Sign Up</h2>
-      <form>
+      <form onsubmit="handleSignUp(event)">
         <label for="signup-email">Email:</label>
         <input type="email" id="signup-email" name="email" required>
 
@@ -44,6 +45,7 @@
         <input type="password" id="signup-confirm" name="confirm" required>
 
         <button type="submit">Sign Up</button>
+        <p id="signup-message" class="message"></p>
       </form>
     </div>
   </div>
@@ -61,6 +63,30 @@
       document.getElementById('signIn').classList.add('hidden');
       document.querySelectorAll('.toggle-btn')[0].classList.remove('active');
       document.querySelectorAll('.toggle-btn')[1].classList.add('active');
+    }
+
+    function handleSignIn(event) {
+      event.preventDefault();
+      const msg = document.getElementById('signin-message');
+      msg.textContent = "Signing in...";
+      msg.style.color = "#008080";
+
+      setTimeout(() => {
+        msg.textContent = "✅ Signed in successfully!";
+        msg.style.color = "#ff69b4";
+      }, 1500);
+    }
+
+    function handleSignUp(event) {
+      event.preventDefault();
+      const msg = document.getElementById('signup-message');
+      msg.textContent = "Creating account...";
+      msg.style.color = "#008080";
+
+      setTimeout(() => {
+        msg.textContent = "🎉 Account created successfully!";
+        msg.style.color = "#ff69b4";
+      }, 1500);
     }
   </script>
 </body>
